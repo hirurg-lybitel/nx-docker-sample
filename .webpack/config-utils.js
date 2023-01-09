@@ -1,7 +1,5 @@
 const withWatchPoll = (config) => {
-  if (process.env.DEV_PLATFORM === 'DOCKER') {
-    // Make Hot Module Reload (HMR) works
-    // Use polling mechanism to handle Filesystem disparities among diff OS
+  if (process.env.ENV_PLATFORM === 'DOCKER') {
     config.watchOptions = {
       aggregateTimeout: 500,
       poll: 1000,
