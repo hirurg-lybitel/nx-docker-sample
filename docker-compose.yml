@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  # React App
+  app-1:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app-base
+    command: yarn app-1:docker
+    ports:
+      - target: 4201
+        published: 4201
+        mode: host
+
+  # React App
+  app-2:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app-base
+    command: yarn app-2:docker
+    ports:
+      - "4202:4202"
+      - "5202:4202"
+
+  # Angular App
+  app-3:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app-base
+    command: yarn app-3:docker
+    ports:
+      - 4203:4203
+
+  # Express App
+  api-1:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app-base
+    command: yarn api-1:docker
+    ports:
+      - 4310:3333 # по умолчанию
+      - 4311:4311
+
+volumes:
+  mono-node-modules: null
