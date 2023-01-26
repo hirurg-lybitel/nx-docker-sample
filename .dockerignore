@@ -1,5 +1,12 @@
 node_modules
-dist
 tmp
+lib
+
+# .webpack
+.git
 .vscode
 .angular
+
+.env
+README.md
+

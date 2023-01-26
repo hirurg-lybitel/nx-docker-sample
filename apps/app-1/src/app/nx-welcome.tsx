@@ -5,7 +5,7 @@
  Delete this file and get started with your project!
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-export function NxWelcome({ title }: { title: string }) {
+ export function NxWelcome({ title }: { title: string }) {
   return (
     <>
       <style
@@ -420,6 +420,10 @@ export function NxWelcome({ title }: { title: string }) {
               <span> Hello there,</span>
               Welcome {title} (React) 👋
             </h1>
+          </div>
+          <br/>
+          <div>
+            {`NX_SOCKET_PORT = ${process.env['NX_SOCKET_PORT']}`}
           </div>
 
           <div id="hero" className="rounded">
