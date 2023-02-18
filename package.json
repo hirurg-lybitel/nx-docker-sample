@@ -15,7 +15,8 @@
     "build": "nx build",
     "test": "nx test",
     "startall": "nx run-many --parallel --target=serve --projects=api-1,app-1,app-2,app-3 --maxParallel=4",
-    "buildall": "nx run-many --parallel --target=build --all --maxParallel=4"
+    "build:all": "nx run-many --parallel --target=build --all --maxParallel=4",
+    "pm2:start": "pm2-runtime usr/api/main.js --watch --name my-server"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,7 @@
     "@angular/router": "~13.1.0",
     "core-js": "3.6.5",
     "express": "4.17.1",
+    "pm2": "^5.2.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-is": "17.0.2",

@@ -1,24 +1,35 @@
 FROM node:17-alpine3.12 as build
-
+RUN echo "build"
 WORKDIR /usr/apps
 
-# RUN yarn add global nx
+COPY . .
+RUN yarn install --immutable --immutable-cache --check-cache && yarn cache clean
+RUN rm -rf ./dist
+RUN yarn build:all
 
-COPY ./dist/apps .
-COPY package.json yarn.lock ./
+FROM nginx:1.23-alpine as stage1
+RUN echo "stage1"
+COPY --from=build /usr/apps/dist/apps/app-1 /usr/share/nginx/html
+
+FROM nginx:1.23-alpine as stage2
+RUN echo "stage2"
+COPY --from=build /usr/apps/dist/apps/app-2  /usr/share/nginx/html
+
+FROM nginx:1.23-alpine as stage3
+RUN echo "stage3"
+COPY --from=build /usr/apps/dist/apps/app-3  /usr/share/nginx/html
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 
-RUN yarn install --production --immutable --immutable-cache --check-cache && yarn cache clean
+FROM keymetrics/pm2:18-alpine as server
+RUN echo "server"
+WORKDIR /usr/app
+COPY --from=build /usr/apps/dist/apps/api-1 src/
+COPY --from=build /usr/apps/node_modules src/node_modules
+COPY --from=build /usr/apps/pm2.config.js .
 
+ENV PM2_PUBLIC_KEY 2g0zthb6mp3oq16
+ENV PM2_SECRET_KEY 4ml4ivoyodxnapp
 
-# RUN npm install
-# RUN yarn nx --version
-# RUN npm install
-# CMD ["yarn", "startall"]
-
-FROM nginx:1.23-alpine
-COPY --from=build /usr/apps/app-1 /usr/share/nginx/html
-COPY --from=build /usr/apps/app-1 /usr/share/nginx/html
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["pm2-runtime", "start", "pm2.config.js", "--env=production"]

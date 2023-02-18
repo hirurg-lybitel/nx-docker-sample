@@ -1,12 +1,51 @@
 version: '3'
 
 services:
-  app-base:
-    restart: always
+  # React App
+  app-1:
+    image: react-1:app-1
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - ENV_PLATFORM=DOCKER_COMPOSE
-    env_file:
-      - docker.env
+      target: stage1
+    container_name: react-1
+    ports:
+      - target: 80
+        published: 4201
+        mode: host
+
+  # React App
+  app-2:
+    image: react-2:app-2
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: stage2
+    container_name: react-2
+    ports:
+      - 4202:80
+
+  # Angular App
+  app-3:
+    image: angular:app-3
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: stage3
+    container_name: angular-1
+    ports:
+      - 4203:80
+
+  # Express App
+  api-1:
+    image: server
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: server
+    container_name: server
+    ports:
+      - 4310:3333
+
+volumes:
+  mono-node-modules: null

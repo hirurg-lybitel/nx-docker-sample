@@ -30,7 +30,7 @@
     "serve": {
       "executor": "@nrwl/node:execute",
       "options": {
-        "buildTarget": "api-1:build"
+        "buildTarget": "api-1:build:production"
       }
     },
     "lint": {

@@ -1,0 +1,43 @@
+{
+  "root": "libs/helpful",
+  "sourceRoot": "libs/helpful/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/helpful",
+        "tsConfig": "libs/helpful/tsconfig.lib.json",
+        "project": "libs/helpful/package.json",
+        "entryFile": "libs/helpful/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/helpful/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/helpful/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/helpful"],
+      "options": {
+        "jestConfig": "libs/helpful/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

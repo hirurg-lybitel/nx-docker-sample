@@ -1,12 +1,18 @@
 node_modules
 tmp
 lib
+dist
 
-# .webpack
 .git
 .vscode
 .angular
+.editorconfig
 
 .env
 README.md
 
+.prettierignore
+.prettierrc
+.eslintrc.json
+.gitignore
+yarn-error.log

@@ -7,6 +7,7 @@
     "app-2": "apps/app-2",
     "app-2-e2e": "apps/app-2-e2e",
     "app-3": "apps/app-3",
-    "app-3-e2e": "apps/app-3-e2e"
+    "app-3-e2e": "apps/app-3-e2e",
+    "helpful": "libs/helpful"
   }
 }
