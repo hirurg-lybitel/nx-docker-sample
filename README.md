@@ -1,9 +1,9 @@
 # Nx-docker-sample
 
 <p align="center" >
-  <img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="250">
-  <img src="https://user-images.githubusercontent.com/11502258/219870843-36aff684-e738-4c1a-b165-9733db928df3.png" width="450">
-  <img src="https://user-images.githubusercontent.com/11502258/219869637-9733b7ed-2449-4d95-98ab-2a6456fe4195.png" width="150"> 
+  <img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="200">
+  <img src="https://user-images.githubusercontent.com/11502258/219870843-36aff684-e738-4c1a-b165-9733db928df3.png" width="400">
+  <img src="https://user-images.githubusercontent.com/11502258/219869637-9733b7ed-2449-4d95-98ab-2a6456fe4195.png" width="100"> 
 </p>
 
 
