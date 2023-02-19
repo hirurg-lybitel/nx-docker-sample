@@ -3,7 +3,7 @@ version: '3'
 services:
   # React App
   app-1:
-    image: react-1:app-1
+    image: hirurglybitel/app-1
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,7 +16,7 @@ services:
 
   # React App
   app-2:
-    image: react-2:app-2
+    image: hirurglybitel/app-2
     build:
       context: .
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
 
   # Angular App
   app-3:
-    image: angular:app-3
+    image: hirurglybitel/app-3
     build:
       context: .
       dockerfile: Dockerfile
@@ -38,7 +38,7 @@ services:
 
   # Express App
   api-1:
-    image: server
+    image: hirurglybitel/server
     build:
       context: .
       dockerfile: Dockerfile
