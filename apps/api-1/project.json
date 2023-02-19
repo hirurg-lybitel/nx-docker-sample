@@ -6,6 +6,7 @@
     "build": {
       "executor": "@nrwl/node:build",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/api-1",
         "main": "apps/api-1/src/main.ts",
@@ -30,7 +31,12 @@
     "serve": {
       "executor": "@nrwl/node:execute",
       "options": {
-        "buildTarget": "api-1:build:production"
+        "buildTarget": "api-1:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "api-1:build:production"
+        }
       }
     },
     "lint": {
